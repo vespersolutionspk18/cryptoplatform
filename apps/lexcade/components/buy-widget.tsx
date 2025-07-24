@@ -128,7 +128,7 @@ const ConverterField = memo(({
 ConverterField.displayName = 'ConverterField';
 
 // Isolated summary component that updates with live price
-const BuySummary = memo(({ cryptoAmount, cryptoSymbol, onReset }: { cryptoAmount: number; cryptoSymbol: string; onReset: () => void }) => {
+const BuySummary = ({ cryptoAmount, cryptoSymbol, onReset }: { cryptoAmount: number; cryptoSymbol: string; onReset: () => void }) => {
   const { cryptoConfig } = useCrypto();
   const { price } = usePriceUpdates(cryptoConfig.binanceSymbol);
   const { addTransaction } = useTransactionsAPI();
@@ -191,10 +191,9 @@ const BuySummary = memo(({ cryptoAmount, cryptoSymbol, onReset }: { cryptoAmount
   );
 });
 
-BuySummary.displayName = 'BuySummary';
 
 // Isolated USD display that updates with live price
-const UsdDisplay = memo(({ cryptoAmount }: { cryptoAmount: number }) => {
+const UsdDisplay = ({ cryptoAmount }: { cryptoAmount: number }) => {
   const { cryptoConfig } = useCrypto();
   const { price } = usePriceUpdates(cryptoConfig.binanceSymbol);
   const usdAmount = cryptoAmount * price;
@@ -210,9 +209,7 @@ const UsdDisplay = memo(({ cryptoAmount }: { cryptoAmount: number }) => {
       disableSelect
     />
   );
-});
-
-UsdDisplay.displayName = 'UsdDisplay';
+};
 
 export const BuyWidget = memo(() => {
   const { cryptoConfig } = useCrypto();

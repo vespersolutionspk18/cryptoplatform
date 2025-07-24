@@ -274,23 +274,11 @@ const SettingsContentComponent = () => {
                       <RiDeviceLine className="h-5 w-5" />
                     </div>
                     <div>
-                      <p className="text-sm font-medium">MacBook Pro</p>
-                      <p className="text-xs text-muted-foreground">San Francisco, CA • Current</p>
+                      <p className="text-sm font-medium">MacBook Air</p>
+                      <p className="text-xs text-muted-foreground">Lahore, Pakistan • Current</p>
                     </div>
                   </div>
                   <Badge className="bg-emerald-500/10 text-emerald-600 border-0">Active</Badge>
-                </div>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 rounded-full bg-muted flex items-center justify-center">
-                      <RiDeviceLine className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-medium">iPhone 15 Pro</p>
-                      <p className="text-xs text-muted-foreground">San Francisco, CA • 2 hours ago</p>
-                    </div>
-                  </div>
-                  <Button variant="ghost" size="sm">Revoke</Button>
                 </div>
               </div>
             </CardContent>

@@ -46,7 +46,7 @@ export function usePriceUpdates(symbol: string) {
         }
       });
 
-      // Poll every 5 seconds if WebSocket is not connected
+      // Poll every 1 second if WebSocket is not connected
       intervalRef.current = setInterval(() => {
         if (!isWebSocketConnected) {
           fetch24hStats(symbol).then(stats => {
@@ -57,7 +57,7 @@ export function usePriceUpdates(symbol: string) {
             }
           });
         }
-      }, 5000);
+      }, 1000);
     };
 
     // Try WebSocket connection

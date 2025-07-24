@@ -32,19 +32,13 @@ const AppSidebarComponent = ({ ...props }: React.ComponentProps<typeof Sidebar>)
     <Sidebar collapsible="none" className="w-16 sm:w-20 border-r" {...props}>
       <SidebarHeader className="items-center py-4">
         <Link className="inline-flex" href="/" aria-label="Go to homepage">
-          <svg
-            className="text-foreground"
-            xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path
-              fill="currentColor"
-              d="M4 13.5V4a1 1 0 0 1 1-1h6.5zM12 2h6.5A1.5 1.5 0 0 1 20 3.5V12zm-1.5 9.5H4A1.5 1.5 0 0 0 2.5 13v6.5zm2 0V20a1 1 0 0 0 1 1H20z"
-            />
-          </svg>
+          <img
+            src="/integra.png"
+            alt="Integra Logo"
+            width="80"
+            height="80"
+            className="object-contain"
+          />
         </Link>
       </SidebarHeader>
       <SidebarContent>

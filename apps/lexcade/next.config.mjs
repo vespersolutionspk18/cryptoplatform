@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  assetPrefix: "/exp4-static",
   transpilePackages: ["@workspace/ui"],
   images: {
     remotePatterns: [
@@ -9,7 +8,7 @@ const nextConfig = {
         hostname: 'raw.githubusercontent.com',
       },
     ],    
-  },  
+  },
 }
 
 export default nextConfig
