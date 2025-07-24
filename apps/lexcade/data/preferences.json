@@ -1,0 +1,10 @@
+{
+  "trading": {
+    "defaultOrderType": "market",
+    "defaultAmount": 100,
+    "slippageTolerance": 0.5,
+    "oneClickTrading": false,
+    "showOrderBook": true,
+    "advancedCharts": true
+  }
+}
