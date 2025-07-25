@@ -13,8 +13,8 @@ export function useTransactionsAPI() {
     try {
       setLoading(true);
       setError(null);
-      const data = await TransactionAPI.getTransactions();
-      setTransactions(data);
+      const response = await TransactionAPI.getTransactions();
+      setTransactions(response.data);
     } catch (err) {
       setError('Failed to load transactions');
     } finally {

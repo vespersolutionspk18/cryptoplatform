@@ -113,8 +113,8 @@ const WalletContentComponent = () => {
                       <div className="flex items-center justify-between text-sm">
                         <div className="flex items-center gap-2">
                           {(() => {
-                            const Icon = CRYPTO_CONFIGS[balance.symbol]?.icon;
-                            return Icon ? <Icon className="h-4 w-4" /> : null;
+                            const logoUrl = CRYPTO_CONFIGS[balance.symbol as keyof typeof CRYPTO_CONFIGS]?.logo;
+                            return logoUrl ? <img src={logoUrl} className="h-4 w-4" alt={balance.symbol} /> : null;
                           })()}
                           <span className="font-medium">{balance.symbol}</span>
                         </div>
@@ -136,7 +136,7 @@ const WalletContentComponent = () => {
           <CardContent className="p-0">
             <div className="divide-y">
               {balances.map((balance) => {
-                const Icon = CRYPTO_CONFIGS[balance.symbol]?.icon;
+                const logoUrl = CRYPTO_CONFIGS[balance.symbol as keyof typeof CRYPTO_CONFIGS]?.logo;
                 return (
                   <Link
                     key={balance.symbol}
@@ -144,9 +144,9 @@ const WalletContentComponent = () => {
                     className="flex items-center justify-between p-4 hover:bg-muted/50 transition-colors"
                   >
                     <div className="flex items-center gap-3">
-                      {Icon && (
+                      {logoUrl && (
                         <div className="h-10 w-10 rounded-full bg-muted flex items-center justify-center">
-                          <Icon className="h-5 w-5" />
+                          <img src={logoUrl} className="h-5 w-5" alt={balance.symbol} />
                         </div>
                       )}
                       <div>
@@ -231,7 +231,7 @@ const WalletContentComponent = () => {
                 <div>
                   <p className="text-sm text-muted-foreground">Largest Holding</p>
                   <p className="text-lg font-semibold">
-                    {balances.length > 0 ? balances[0].symbol : '-'}
+                    {balances.length > 0 ? balances[0]?.symbol ?? '-' : '-'}
                   </p>
                 </div>
               </div>

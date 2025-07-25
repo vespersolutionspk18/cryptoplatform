@@ -24,11 +24,12 @@ async function writeTransactions(transactions: any[]) {
 // GET single transaction
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const transactions = await readTransactions();
-    const transaction = transactions.find((t: any) => t.id === params.id);
+    const transaction = transactions.find((t: any) => t.id === id);
     
     if (!transaction) {
       return NextResponse.json({ error: 'Transaction not found' }, { status: 404 });
@@ -43,12 +44,13 @@ export async function GET(
 // PUT update transaction
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const updates = await request.json();
     const transactions = await readTransactions();
-    const index = transactions.findIndex((t: any) => t.id === params.id);
+    const index = transactions.findIndex((t: any) => t.id === id);
     
     if (index === -1) {
       return NextResponse.json({ error: 'Transaction not found' }, { status: 404 });
@@ -66,11 +68,12 @@ export async function PUT(
 // DELETE single transaction
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const transactions = await readTransactions();
-    const filtered = transactions.filter((t: any) => t.id !== params.id);
+    const filtered = transactions.filter((t: any) => t.id !== id);
     
     if (filtered.length === transactions.length) {
       return NextResponse.json({ error: 'Transaction not found' }, { status: 404 });

@@ -37,15 +37,15 @@ export async function fetchOHLCData(days: number = 1): Promise<CandleData[]> {
     
     // Transform CoinGecko data to our chart format
     return data.map(([timestamp, open, high, low, close]) => ({
-      date: new Date(timestamp).toLocaleDateString('en-US', { 
+      date: new Date(timestamp || Date.now()).toLocaleDateString('en-US', { 
         month: 'short', 
         day: 'numeric',
         hour: '2-digit',
         minute: '2-digit'
       }),
-      openClose: [open, close],
-      high,
-      low
+      openClose: [open || 0, close || 0],
+      high: high || 0,
+      low: low || 0
     }));
   } catch (error) {
     console.error('Error fetching OHLC data:', error);

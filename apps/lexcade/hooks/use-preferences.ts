@@ -63,7 +63,7 @@ export function usePreferences() {
   const updateTradingPreferences = useCallback(async (updates: Partial<TradingPreferences>) => {
     const currentTrading = preferences?.trading || {};
     return savePreferences({
-      trading: { ...currentTrading, ...updates }
+      trading: { ...currentTrading, ...updates } as TradingPreferences
     });
   }, [preferences, savePreferences]);
 

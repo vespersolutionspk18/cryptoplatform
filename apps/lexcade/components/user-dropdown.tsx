@@ -21,23 +21,17 @@ export default function UserDropdown() {
           className="h-auto p-0 hover:bg-transparent rounded-full"
         >
           <Avatar>
-            <AvatarImage
-              src="https://raw.githubusercontent.com/origin-space/origin-images/refs/heads/main/exp4/user_i02xph.png"
-              width={32}
-              height={32}
-              alt="Profile image"
-            />
-            <AvatarFallback>LB</AvatarFallback>
+            <AvatarFallback>HK</AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="max-w-64 dark:border-none" align="end">
         <DropdownMenuLabel className="flex min-w-0 flex-col">
           <span className="truncate text-sm font-medium text-foreground">
-            Lucy Bennett
+            Hamid Khan
           </span>
           <span className="truncate text-xs font-normal text-muted-foreground">
-            l.bennett@originui.com
+            h.khan@integra.com
           </span>
         </DropdownMenuLabel>
         <DropdownMenuSeparator className="dark:bg-white/8" />

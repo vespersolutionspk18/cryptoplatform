@@ -34,7 +34,7 @@ interface PeriodSelectorProps {
 }
 
 export default function PeriodSelector({ value, onChange }: PeriodSelectorProps) {
-  const currentPeriod = PERIOD_OPTIONS.find(opt => opt.value === value) || PERIOD_OPTIONS[0];
+  const currentPeriod = PERIOD_OPTIONS.find(opt => opt.value === value) ?? PERIOD_OPTIONS[0]!;
 
   return (
     <DropdownMenu>

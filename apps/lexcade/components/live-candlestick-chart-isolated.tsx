@@ -137,7 +137,7 @@ const renderCandlestick = (props: any) => {
     );
   }
 
-  return null;
+  return <g />;
 };
 
 const CustomTooltip = memo(({ active, payload }: TooltipProps<number, string>) => {
@@ -226,7 +226,7 @@ const LiveCandlestickChartComponent = ({ interval = '1m', limit = 60 }: LiveCand
     const lastCandle = newData[newData.length - 1];
     
     // Check if we need to create a new candle
-    if (lastCandleTimeRef.current && currentTime > lastCandleTimeRef.current) {
+    if (!lastCandle || (lastCandleTimeRef.current && currentTime > lastCandleTimeRef.current)) {
       const newCandle: CandleData = {
         date: new Date(currentTime).toLocaleDateString('en-US', { 
           month: 'short', 
@@ -245,7 +245,7 @@ const LiveCandlestickChartComponent = ({ interval = '1m', limit = 60 }: LiveCand
       }
       
       lastCandleTimeRef.current = currentTime;
-    } else {
+    } else if (lastCandle) {
       // Update the last candle
       lastCandle.openClose[1] = priceData.close;
       lastCandle.high = Math.max(lastCandle.high, priceData.high);

@@ -131,9 +131,9 @@ const TransactionsTablePaginatedComponent = () => {
           </TableHeader>
           <TableBody>
             {transactions.map((tx) => {
-              const cryptoConfig = CRYPTO_CONFIGS[tx.cryptoSymbol];
+              const cryptoConfig = CRYPTO_CONFIGS[tx.cryptoSymbol as keyof typeof CRYPTO_CONFIGS];
               const cryptoName = cryptoConfig?.name || tx.cryptoSymbol;
-              const Icon = cryptoConfig?.icon;
+              const logoUrl = cryptoConfig?.logo;
               
               return (
                 <TableRow key={tx.id} className="hover:bg-transparent">
@@ -154,8 +154,8 @@ const TransactionsTablePaginatedComponent = () => {
                   </TableCell>
                   <TableCell className="font-medium">
                     <div className="flex items-center gap-2">
-                      {Icon && (
-                        <Icon className="h-5 w-5" />
+                      {logoUrl && (
+                        <img src={logoUrl} className="h-5 w-5" alt={cryptoName} />
                       )}
                       <span>{cryptoName}</span>
                       <span className="text-muted-foreground">({tx.cryptoSymbol})</span>

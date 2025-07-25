@@ -143,7 +143,7 @@ export function useWalletBalances() {
 
       balanceArray.push({
         symbol,
-        name: CRYPTO_CONFIGS[symbol]?.name || symbol,
+        name: CRYPTO_CONFIGS[symbol as keyof typeof CRYPTO_CONFIGS]?.name || symbol,
         amount,
         usdValue,
         price: currentPrice,

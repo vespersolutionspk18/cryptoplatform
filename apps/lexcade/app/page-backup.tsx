@@ -9,7 +9,7 @@ import UserDropdown from "@/components/user-dropdown";
 import { RiSearch2Line } from "@remixicon/react";
 import ThemeToggle from "@/components/theme-toggle";
 import { Converter } from "@/components/converter-isolated";
-import { LiveCandlestickChart } from "@/components/live-candlestick-chart-optimized";
+import { LiveCandlestickChart } from "@/components/live-candlestick-chart-isolated";
 import { Card, CardContent } from "@/components/ui/card";
 import PeriodSelector, { PERIOD_OPTIONS } from "@/components/period-selector";
 import { TransactionsTable } from "@/components/transactions-table";

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Red Circle Favicon</title>
+</head>
+<body>
+    <canvas id="canvas" width="32" height="32"></canvas>
+    <br><br>
+    <button onclick="downloadFavicon()">Download Favicon</button>
+    <p>Right-click the canvas and "Save image as..." to save as favicon.ico</p>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Create red circle
+        ctx.fillStyle = '#DC2626'; // Red color
+        ctx.beginPath();
+        ctx.arc(16, 16, 14, 0, 2 * Math.PI);
+        ctx.fill();
+        
+        function downloadFavicon() {
+            const link = document.createElement('a');
+            link.download = 'favicon.ico';
+            link.href = canvas.toDataURL('image/x-icon');
+            link.click();
+        }
+    </script>
+</body>
+</html>

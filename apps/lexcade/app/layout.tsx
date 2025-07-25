@@ -3,6 +3,11 @@ import { ThemeProvider } from "../providers/theme-provider";
 import { CryptoProvider } from "../contexts/crypto-context";
 import "./globals.css";
 
+export const metadata = {
+  title: "Lexcade",
+  description: "Professional cryptocurrency trading platform",
+};
+
 const geistSans = Geist({
   variable: "--font-sans",
   subsets: ["latin"],

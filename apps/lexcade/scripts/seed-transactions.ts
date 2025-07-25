@@ -67,7 +67,7 @@ async function generateTransactions(count: number): Promise<Transaction[]> {
     const fee = usdAmount * 0.007;
     const timestamp = now - (89 * dayInMs) - Math.random() * dayInMs; // 89-90 days ago
     
-    balances[symbol] += initialAmount;
+    balances[symbol] = (balances[symbol] || 0) + initialAmount;
     
     transactions.push({
       id: `tx_${timestamp}_${Math.random().toString(36).substr(2, 9)}`,
@@ -86,10 +86,11 @@ async function generateTransactions(count: number): Promise<Transaction[]> {
   // Generate remaining transactions
   for (let i = cryptoSymbols.length; i < count; i++) {
     const cryptoSymbol = cryptoSymbols[Math.floor(Math.random() * cryptoSymbols.length)];
+    if (!cryptoSymbol) continue;
     
     // Decide type based on current balance
     let type: 'buy' | 'sell';
-    if (balances[cryptoSymbol] <= 0.001) {
+    if ((balances[cryptoSymbol] || 0) <= 0.001) {
       type = 'buy'; // Must buy if balance is too low
     } else {
       type = Math.random() > 0.4 ? 'buy' : 'sell'; // 60% buy, 40% sell
@@ -101,7 +102,7 @@ async function generateTransactions(count: number): Promise<Transaction[]> {
       cryptoAmount = getRandomAmount(cryptoSymbol);
     } else {
       // Sell up to 50% of current balance
-      const maxSell = balances[cryptoSymbol] * 0.5;
+      const maxSell = (balances[cryptoSymbol] || 0) * 0.5;
       cryptoAmount = Math.min(getRandomAmount(cryptoSymbol), maxSell);
     }
     
@@ -123,9 +124,9 @@ async function generateTransactions(count: number): Promise<Transaction[]> {
     // Update balance only if completed
     if (status === 'completed') {
       if (type === 'buy') {
-        balances[cryptoSymbol] += cryptoAmount;
+        balances[cryptoSymbol] = (balances[cryptoSymbol] || 0) + cryptoAmount;
       } else {
-        balances[cryptoSymbol] -= cryptoAmount;
+        balances[cryptoSymbol] = (balances[cryptoSymbol] || 0) - cryptoAmount;
       }
     }
     
