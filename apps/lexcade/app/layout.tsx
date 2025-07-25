@@ -6,6 +6,9 @@ import "./globals.css";
 export const metadata = {
   title: "Lexcade",
   description: "Professional cryptocurrency trading platform",
+  icons: {
+    icon: "data:,",
+  },
 };
 
 const geistSans = Geist({
